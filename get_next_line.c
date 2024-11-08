@@ -6,7 +6,7 @@
 /*   By: afpachec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:18:59 by afpachec          #+#    #+#             */
-/*   Updated: 2024/11/08 14:51:57 by afpachec         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:08:52 by afpachec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ char	*get_next_line(int fd)
 	ssize_t		distance;
 	ssize_t		read_bytes;
 
-	buff[BUFFER_SIZE] = '\0';
 	str[0] = ft_strdup("");
 	if (!str[0])
 		return (NULL);
@@ -106,6 +105,11 @@ char	*get_next_line(int fd)
 		if (!str[0])
 			return (NULL);
 		read_bytes = read_fd(fd, buff);
+		if (read_bytes < 0)
+		{
+			free(str[0]);
+			return (NULL);
+		}
 	}
 	if (ft_strlen(str[0]))
 		return (str[0]);
