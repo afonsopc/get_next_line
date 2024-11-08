@@ -6,7 +6,7 @@
 /*   By: afpachec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:18:59 by afpachec          #+#    #+#             */
-/*   Updated: 2024/11/08 12:50:24 by afpachec         ###   ########.fr       */
+/*   Updated: 2024/11/08 14:51:57 by afpachec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,10 @@ ssize_t	read_fd(int fd, char buff[BUFFER_SIZE + 1])
 	ssize_t		read_bytes;
 
 	read_bytes = read(fd, buff, BUFFER_SIZE);
-	buff[read_bytes] = '\0';
 	if (read_bytes <= 0)
 		ft_memset(buff, '\0', BUFFER_SIZE);
+	else
+		buff[read_bytes] = '\0';
 	return (read_bytes);
 }
 
@@ -90,7 +91,9 @@ char	*get_next_line(int fd)
 	ssize_t		read_bytes;
 
 	buff[BUFFER_SIZE] = '\0';
-	str[0] = malloc(1);
+	str[0] = ft_strdup("");
+	if (!str[0])
+		return (NULL);
 	read_bytes = 1;
 	while (str[0] && read_bytes > 0)
 	{
