@@ -6,7 +6,7 @@
 /*   By: afpachec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:18:59 by afpachec          #+#    #+#             */
-/*   Updated: 2024/11/08 15:13:50 by afpachec         ###   ########.fr       */
+/*   Updated: 2024/11/08 15:18:47 by afpachec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,10 @@ char	*read_line(char buff[BUFFER_SIZE + 1], char *str[3], ssize_t distance)
 		return (NULL);
 	}
 	str[0] = ft_strjoin(str[1], str[2]);
-	if (!str[0])
-	{
-		free(str[2]);
-		free(str[1]);
-		return (NULL);
-	}
 	free(str[2]);
 	free(str[1]);
+	if (!str[0])
+		return (NULL);
 	ft_memmove(buff, &buff[distance + 1], BUFFER_SIZE - distance - 1);
 	ft_memset(&buff[BUFFER_SIZE - distance - 1], '\0', distance + 1);
 	str[1] = str[0];
