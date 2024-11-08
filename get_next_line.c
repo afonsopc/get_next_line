@@ -6,7 +6,7 @@
 /*   By: afpachec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:18:59 by afpachec          #+#    #+#             */
-/*   Updated: 2024/11/08 15:18:47 by afpachec         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:37:12 by afpachec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,20 +93,15 @@ char	*get_next_line(int fd)
 	{
 		str[1] = str[0];
 		distance = memchr_distance(buff, '\n', BUFFER_SIZE);
-		if (distance >= 0 && read_line(buff, str, distance))
-			return (str[0]);
+		if (distance >= 0)
+			return (read_line(buff, str, distance));
 		str[0] = ft_strjoin(str[1], buff);
 		free(str[1]);
 		if (!str[0])
 			return (NULL);
 		read_bytes = read_fd(fd, buff);
-		if (read_bytes < 0)
-		{
-			free(str[0]);
-			return (NULL);
-		}
 	}
-	if (ft_strlen(str[0]))
+	if (read_bytes >= 0 && ft_strlen(str[0]))
 		return (str[0]);
 	free(str[0]);
 	return (NULL);
