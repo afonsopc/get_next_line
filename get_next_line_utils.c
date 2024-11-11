@@ -6,7 +6,7 @@
 /*   By: afpachec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:28:23 by afpachec          #+#    #+#             */
-/*   Updated: 2024/11/11 22:43:29 by afpachec         ###   ########.fr       */
+/*   Updated: 2024/11/11 23:34:00 by afpachec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*strjoinbuff(char *s1, char *s2)
 	s2_len = ft_strlen(s2, '\n');
 	str = malloc(s1_len + s2_len + 1);
 	if (!str)
-		return (NULL);
+		return (free(s1), NULL);
 	str[s1_len + s2_len] = '\0';
 	i = -1;
 	while (++i < s1_len)

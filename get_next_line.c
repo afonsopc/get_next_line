@@ -6,7 +6,7 @@
 /*   By: afpachec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:28:23 by afpachec          #+#    #+#             */
-/*   Updated: 2024/11/11 22:48:14 by afpachec         ###   ########.fr       */
+/*   Updated: 2024/11/11 23:37:18 by afpachec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_next_line(int fd)
 			line = strjoinbuff(line, buff);
 			if (!line)
 				return (NULL);
-			if (line[ft_strlen(line, 0) - 1] == '\n')
+			if (line[ft_strlen(line, '\n') - 1] == '\n')
 				break ;
 		}
 		else
@@ -42,6 +42,7 @@ char	*get_next_line(int fd)
 }
 
 /* #include <fcntl.h>
+#include <stdio.h>
 int	main(int argc, char **argv)
 {
 	int		fd;
