@@ -6,7 +6,7 @@
 /*   By: afpachec <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:28:23 by afpachec          #+#    #+#             */
-/*   Updated: 2024/11/11 23:34:00 by afpachec         ###   ########.fr       */
+/*   Updated: 2024/11/11 23:48:31 by afpachec         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ size_t	ft_strlen(char *str, char term)
 	return (counter);
 }
 
-char	*strjoinbuff(char *s1, char *s2)
+char	*str_join_buff(char *s1, char *s2)
 {
 	char	*str;
 	size_t	s1_len;
